@@ -13,7 +13,11 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         color: Colors.lightBlueAccent,
       ),
-      floatingActionButton: OutlinedButton(onPressed: () {}, child: Icon(Icons.add, color: Colors.deepOrange,)),
+      floatingActionButton: OutlinedButton(
+        onPressed: () {},
+        child: Icon(Icons.add, color: Colors.deepOrange,)
+        ),
     );
+
   }
 }

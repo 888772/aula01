@@ -13,7 +13,7 @@ void main(List<String> args) {
   // para saber se a lista está vazia
 
   nomes.isEmpty;
-  nomes.length == 0;
+  //nomes.length == 0;
 
   // para saber se a lista não está vazia
 
