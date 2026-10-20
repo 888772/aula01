@@ -5,13 +5,13 @@ class ConversaRepository {
    List<Conversa> conversas = [
         Conversa(
           contato: 'Matheus',
-          ultimaMsg: 'JUROOO',
+          ultimaMsg: 'É ISSO AÍ MESMO',
           hora: '13:20',
           naoLidas: 1,
           ),
         Conversa(
-          contato: 'Cecilia',
-          ultimaMsg: 'EU AMOOOO',
+          contato: 'ENZO',
+          ultimaMsg: 'BORA DE FF?',
           hora: '15:18',
           naoLidas: 0,
           ),
