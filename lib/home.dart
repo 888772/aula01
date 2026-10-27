@@ -1,40 +1,49 @@
+import 'package:aula01/features/chat/presentation/pages/conversa_list_page.dart';
 import 'package:flutter/material.dart';
-import 'package:aula01/pages/chat_list_page.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('PDM'),
-      ),
+      appBar: AppBar(title: Text('TADS IV')),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'MÓDULO 5',
-            style: TextStyle(fontSize: 24),
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Text('Módulos', style: TextStyle(fontSize: 16)),
           ),
           ListView(
             shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             children: [
-              ListTile(
-                title: Text('Lista de Conversas'),
-                trailing: Icon(Icons.arrow_forward),
-                onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChatListPage()),
-                  );
-                },
-                tileColor: Colors.blue,
+              Card(
+                elevation: 0.5,
+                color: const Color.fromARGB(255, 101, 35, 255),
+                child: ListTile(
+                  title: Text('Chat', style: TextStyle(color: Colors.white)),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ConversaListPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             ],
           ),
-        ]
-      )
+        ],
+      ),
     );
   }
 }
