@@ -1,4 +1,6 @@
 import 'package:aula01/features/chat/domain/entities/conversa.dart';
+
+
 sealed class ConversaListState {}
 
 class ConversaListLoading extends ConversaListState {}

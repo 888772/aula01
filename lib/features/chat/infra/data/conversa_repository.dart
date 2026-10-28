@@ -17,5 +17,9 @@ class ConversaRepository {
       hora: '16:30',
       naoLidas: 10,
     ),
+    
   ];
+
+  void add(Conversa conversa) => conversas.add(conversa);
+
 }
