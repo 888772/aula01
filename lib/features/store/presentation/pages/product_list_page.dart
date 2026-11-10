@@ -23,38 +23,43 @@ class ProductListPage extends StatelessWidget {
         body: BlocBuilder<ProductListBloc, ProductListState>(
           builder: (context, state) {
             if (state is ProductListSuccess) {
-              return ListView.builder(
-                itemCount: state.products.length,
-                itemBuilder: (BuildContext context, int i) {
-                  Product product = state.products[i];
-                  return Card(
-                    child: ListTile(
-                      title: Text(product.nome),
-                      subtitle: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(product.categoria),
-                          Row(
-                            spacing: 10,
-                            children: [
-                              Text('R\$ ${product.preco}', style: TextStyle(fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 93, 0, 255), fontSize: 20)),
-                              Icon(Icons.star, color: Colors.yellow),
-                              Text('${product.avaliacao}'),
-                            ],
-                          ),
-                        ],
-                      ),
-                      leading: Image.network(
-                        product.UrlImagem,
-                        width: 70,
-                        height: 70,
-                        fit: BoxFit.cover,
-                      ),
-                      trailing: Icon(Icons.arrow_forward_ios, size: 26),
-                    ),
-                  );
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context.read<ProductListBloc>().add(ProductListInitialize());
                 },
+                child: ListView.builder(
+                  itemCount: state.products.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    Product product = state.products[i];
+                    return Card(
+                      child: ListTile(
+                        title: Text(product.nome),
+                        subtitle: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(product.categoria),
+                            Row(
+                              spacing: 10,
+                              children: [
+                                Text('R\$ ${product.preco}', style: TextStyle(fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 93, 0, 255), fontSize: 20)),
+                                Icon(Icons.star, color: Colors.yellow),
+                                Text('${product.avaliacao}'),
+                              ],
+                            ),
+                          ],
+                        ),
+                        leading: Image.network(
+                          product.UrlImagem,
+                          width: 70,
+                          height: 70,
+                          fit: BoxFit.cover,
+                        ),
+                        trailing: Icon(Icons.arrow_forward_ios, size: 26),
+                      ),
+                    );
+                  },
+                ),
               );
             }
 

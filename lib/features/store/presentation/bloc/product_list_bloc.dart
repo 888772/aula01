@@ -10,7 +10,7 @@ class ProductListBloc extends Bloc<ProductListEvent, ProductListState> {
   ProductListBloc() : super(ProductListLoading()) {
     on<ProductListInitialize>((event, emit) async {
       await Future.delayed(Duration(seconds: 3));
-      List<Product> dados = productRepo.all();
+      List<Product> dados = await productRepo.all();
       if (dados.isNotEmpty) {
         emit(ProductListSuccess(products: dados));
       } else {

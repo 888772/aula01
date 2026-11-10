@@ -3,7 +3,7 @@ class Product {
   final String nome;
   final double preco;
   final String categoria;
-  final String avaliacao;
+  final double avaliacao;
   final String UrlImagem;
 
 
@@ -15,4 +15,19 @@ class Product {
     required this.avaliacao,
     required this.UrlImagem,
   });
+
+  // factory Product.fromJson(Map<String, dynamic> json){
+  //   final id = json['id'] as int;
+  //   // return Product(id: id, nome: nome, preco: preco, categoria: categoria, avaliacao: avaliacao, UrlImagem: UrlImagem)
+  // }
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json['id'],
+    nome: json['title'],
+    preco: json['price'],
+    categoria: json['category'],
+    avaliacao: json['rating'],
+    UrlImagem: json['thumbnail']
+    );
+
 }
