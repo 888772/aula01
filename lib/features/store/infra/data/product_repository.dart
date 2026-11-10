@@ -40,6 +40,8 @@ class ProductRepository {
     try {
       final response = await http.get(url);
 
+      // MODO 01
+
       // if (response.statusCode == 200) {
       //   Map<String, dynamic> json = jsonDecode(response.body);
       //   List<dynamic> products = json["products"];
@@ -60,6 +62,9 @@ class ProductRepository {
       //   }
       //   return listaProdutos;
       // }
+      
+      // MODO 02
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         List<dynamic> products = json["products"];
