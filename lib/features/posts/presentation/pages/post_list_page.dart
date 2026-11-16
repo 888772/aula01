@@ -28,7 +28,14 @@ class PostListPage extends StatelessWidget {
               },
               child: ListView.builder(
                 itemCount: state.posts.length,
-                itemBuilder: (BuildContext context, int i)
+                itemBuilder: (BuildContext context, int i) {
+                  Post post = state.posts[i];
+                  return Card(
+                    child: ListTile(
+                      title: Text(post.title),
+                    ),
+                  );
+                }
                 )
               );
           }
