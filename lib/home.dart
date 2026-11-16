@@ -1,4 +1,5 @@
 import 'package:aula01/features/chat/presentation/pages/conversa_list_page.dart';
+import 'package:aula01/features/posts/presentation/pages/post_list_page.dart';
 import 'package:aula01/features/store/presentation/pages/product_list_page.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +55,24 @@ class MyHomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ProductListPage())
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                color: const Color.fromARGB(255, 101, 35, 255),
+                child: ListTile(
+                  title: Text('POSTS', style: TextStyle(color: Colors.white)),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      ),
+                    onPressed: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PostListPage())
                       );
                     },
                   ),
