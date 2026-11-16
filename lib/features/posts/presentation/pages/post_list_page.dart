@@ -12,35 +12,54 @@ class PostListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("TWITTER"),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search)), IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))],
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
-        ),
-      body: BlocBuilder<ProductListBloc, ProductListState>(
-        builder: (context, state) {
-          if (state is PostListSuccess) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                context.read<PostListBloc>().add(PostListInitialize());
-              },
-              child: ListView.builder(
-                itemCount: state.posts.length,
-                itemBuilder: (BuildContext context, int i) {
-                  Post post = state.posts[i];
-                  return Card(
-                    child: ListTile(
-                      title: Text(post.title),
-                    ),
-                  );
-                }
-                )
+    return BlocProvider(
+      create: (BuildContext context) => PostListBloc(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("TWITTER"),
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search)), IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))],
+          backgroundColor: Colors.blueAccent,
+          foregroundColor: Colors.white,
+          ),
+        body: BlocBuilder<PostListBloc, PostListState>(
+          builder: (context, state) {
+            if (state is PostListSuccess) {
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context.read<PostListBloc>().add(PostListInitialize());
+                },
+                child: ListView.builder(
+                  itemCount: state.posts.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    Post post = state.posts[i];
+                    return Card(
+                      child: ListTile(
+                        title: Text(post.title),
+                      ),
+                    );
+                  }
+                  ),
+                );
+            }
+            if (state is PostListFailure) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(Icons.cloud_off_rounded),
+                  Center(child: Text(state.msg))
+                ],
               );
-          }
-        },
-        )
-      );
+            }
+
+            if (state is PostListLoading) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            return SizedBox();
+          },
+          )
+        ),
+    );
   }
 }
