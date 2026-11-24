@@ -64,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                 elevation: 0.5,
                 color: const Color.fromARGB(255, 101, 35, 255),
                 child: ListTile(
-                  title: Text('POSTS', style: TextStyle(color: Colors.white)),
+                  title: Text('Posts', style: TextStyle(color: Colors.white)),
                   trailing: IconButton(
                     icon: Icon(
                       Icons.arrow_forward,

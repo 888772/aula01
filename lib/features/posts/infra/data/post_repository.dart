@@ -10,7 +10,6 @@ class PostRepository {
       title: 'Introdução ao Flutter e Dart',
       body: 'Aprenda a criar objetos e estruturar modelos de dados de forma simples.',
       likes: 120,
-      tags: ['flutter', 'dart', 'programacao'],
       dislikes: 3,
       views: 1540,
     )

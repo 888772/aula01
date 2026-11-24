@@ -16,7 +16,7 @@ class PostListPage extends StatelessWidget {
       create: (BuildContext context) => PostListBloc(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("TWITTER"),
+          title: Text("TWITTER", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search)), IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))],
           backgroundColor: Colors.blueAccent,
           foregroundColor: Colors.white,
@@ -34,7 +34,22 @@ class PostListPage extends StatelessWidget {
                     Post post = state.posts[i];
                     return Card(
                       child: ListTile(
-                        title: Text(post.title),
+                        title: Text(post.title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                        subtitle: Column(
+                          children: [
+                            Text(post.body, style: TextStyle(fontSize: 12)),
+                            Row(
+                              spacing: 5,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(onPressed: () {}, icon: Icon(Icons.favorite_outline)),
+                                post.likes > 1 ? Text('${post.likes} Likes') :  Text('${post.likes} Like'),
+                                Icon(Icons.sentiment_very_dissatisfied),
+                                post.dislikes > 1 ? Text('${post.dislikes} Unlikes') : Text('${post.dislikes} Unlike'),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }
